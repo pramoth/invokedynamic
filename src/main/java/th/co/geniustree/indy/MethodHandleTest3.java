@@ -73,7 +73,7 @@ public class MethodHandleTest3 {
         // ซึ่ง invokedynamic จะไปเรียก static method ที่ชื่อ MethodHandleTest2.boostrapMethod() ที่เราเขียนไว้ใน part 2 อีกที
         Handle bootstrap = new Handle(Opcodes.H_INVOKESTATIC, "th/co/geniustree/indy/MethodHandleTest2", "boostrapMethod", bootstrapMethodType, false);
 
-        // ก่อนที่จะเรียก MethodHandleTest2.target(String) จะต้อง push ค่า "World" ลงไปใน operand stakc ก่อน
+        // ก่อนที่จะเรียก MethodHandleTest2.target(String) จะต้อง push ค่า "World" ลงไปใน operand stack ก่อน
         mv.visitLdcInsn("World");
 
         // สร้าง bytecode เพื่อเรียก method MethodHandleTest2.target()
@@ -83,7 +83,7 @@ public class MethodHandleTest3 {
         mv.visitInsn(RETURN);
 
         // stack size 1 เนื่องจาก ก่อนเรียก MethodHandleTest2.target(String) จะต้อง push ค่าของตัวแปร message ลงใน operand stack ก่อนเรียกใช้งาน
-        // local variable 1 คือ String[] args และ String message
+        // local variable 2 คือ String[] args และ String message
         mv.visitMaxs(1, 2);
         mv.visitEnd();
     }
